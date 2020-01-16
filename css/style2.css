@@ -14,27 +14,53 @@ body{
     border: 5px solid red;
     border-radius: 50%;
     z-index: 100;
+    position: absolute;
+
+}
+
+#games{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+#imgOk{
+    width: 45%;
+    height: 300px;
+    float: left;
+    margin: 10px;
+    border: solid black 2px;
+    background-color: aqua;
     
 }
 
-#imgOK{
-    width: 40%;
+#imgDif{
+    width: 45%;
+    height: 300px;
     float: left;
     margin: 10px;
+    border: solid black 2px;
+    background-color: aqua;
+    position: relative;
 }
 
-#imgDIF{
-    width: 40%;
-    float: left;
-    margin: 10px;
+#points{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.point{
+    width: 20px;
+    height: 20px;
+    float:left;
+    margin: 5px;
+    border: solid 2px white;
+    border-radius: 5px;
+    
 }
 
-.diference{
-    background: #FF0000;
-}
 
-
-#napis {
+#points {
         width:448px;
         height:46px;
         font-size:24px;
@@ -44,7 +70,7 @@ body{
         color: white;
       }
 
-      #napis > span {
+      #points > span {
         display:block;
         float:left;
         width:40px;

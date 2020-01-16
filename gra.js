@@ -1,46 +1,43 @@
-window.onload = function(){
-    Game.init();
+function Point(x,y,r){
+    this.x=x;
+    this.y=y;
+    this.r=r;
+    this.show=false;
+    
+    
 };
 
-
-
-Game = {
-    init:function(){
-        
-        Game.document.createElement('img');
-        Game.img1 = new Image();
-        Game.img1.src = 'img2.png';
-        Game.img1.width = 500;
-        Game.img2 = document.createElement('img');
-        Game.img2.src = 'img2.png';
-        Game.img2.width = 500;
-        Game.img2.addEventListener('mouseup', mauseclick, false);
-        Game.points=[new Point(10,51,3),new Point(10,41,3)];
-       
-        
-        
-        Game.gra = document.getElementById('gra');
-        Game.gra.appendChild(Game.img1);
-        Game.gra.appendChild(Game.img2);
-       
+Point.prototype.find=function(x,y){
+    console.log("ok");
     
-
-   
-}
 }
 
 
-   function mauseclick(ev){
-    const y = ev.clientY-Game.img2.top;
-    const x = ev.clientX-Game.img2.left;
-       let check = document.createElement('div');
-       check.classList.add("check")
-       check.style.transform = "translateX(" + ev.clientX + "px) translateY(" + ev.clientY + "px)";
-       
-       Game.gra.appendChild(check);
-       
-     
-	}
-    
+
+
+$(document).ready(function(){
+    let img1="/img2.png";
+    let img2="/img2.png";
   
+    $('<img />').attr('src', "" + img1 + "")         
+                        .width('100%').height('100%')
+                        .appendTo($('#imgOk')); 
+    
+    $('<img />').attr('src', "" + img2 + "")         
+                        .width('100%').height('100%')
+                        .appendTo($('#imgDif')); 
+    
+    $('#imgDif').click(function(e){
+    var x = e.pageX - this.offsetLeft;
+    var y = e.pageY - this.offsetTop;
+        $('<div />').addClass("check").css('top', "" + y + "px")
+            .css('left', "" + x + "px")
+                        .appendTo($('#imgDif')); 
+        
+    });
+
+});
+
+
+
 
