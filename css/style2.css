@@ -1,15 +1,26 @@
 #spot_diff_container {
     margin: 40px; 
+    width: 520px;
 }
-		#spot_diff_image { 
-            background: url('/img2.png'); 
-            float: left;
+#spot_diff_image { 
+    background: url('/img2.png'); 
+    float: left;
+    width: 250;
+    height: 381;
+    
+    box-sizing: border-box;
 }
-		#spot_diff_image2{
-            background: url('/img2.png'); 
-            float: left;
+#spot_diff_image2{ 
+    background: url('/img2.png'); 
+    width: 250;
+    height: 381;
+    float: left;
+   
+    box-sizing: border-box;
 }
-		.spot_diff_clear {
+
+
+.spot_diff_clear {
             clear: both; width: 100%;
 }
 		#spot_diff_message {

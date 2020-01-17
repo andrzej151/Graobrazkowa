@@ -37,7 +37,7 @@
 		$(document).ready(function() {
 			
 			var ctx = $("#spot_diff_image")[0].getContext("2d");
-			$('#spot_diff_image').attr({width:picture_width,height:picture_height});
+			$('#spot_diff_image').attr({width:picture_width,height:picture_height,});
 			$('#spot_diff_image2').css({width:picture_width,height:picture_height});
 			$("#spot_diff_container").css("width", picture_width*2);
 			$("#spot_diff_message").html(s_find_diff+ (points_table.length-found));
