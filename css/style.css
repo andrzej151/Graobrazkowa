@@ -1,0 +1,64 @@
+body{
+    background-color: #666;
+    font-family: fantasy;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+        
+}
+.option{
+    float: left;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #777;
+    color: #000;
+    width: 110px;
+    height: 70px;
+    text-align: center;
+    border: solid 3px #555;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.option:hover{
+    background-color: #999;
+    border: solid 3px #444;
+    
+}
+
+a{
+    
+    font-size: 16px;
+    font-family: monospace;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    color: #000;
+}
+
+a:hover{
+    color: #FFF;
+}
+
+.grafika{
+    text-align: center;
+    margin-top: 30px;
+}
+
+#mail{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.formularz{
+    width: 500px;
+    margin-top: 30px;
+    
+    
+}
+form{
+    text-align: right;
+}

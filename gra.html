@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- Dla zwiększenia czytelności pozostawiłem jedynie komentarze dotyczące zmian.-->
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Modernizr</title>
+		<style>
+			body{
+				margin:0;
+				padding: 0;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<script src="js/modernizr-2.6.2.min.js"></script>
+		<!--  -->
+		<script src="js/rAF.js"></script>
+		
+
+		<script>
+const W = 400; //rozmiar okna
+const X=20, Y=40; //punkt poczatkowy
+var my_canvas;
+var scale;
+var fps = 30;
+var img_Ok = new Image();
+var img_Dif = new Image();
+var ctx;
+var win =false;
+          
+            
+var lastTime = 0;
+var punkty = [];
+var score=0;
+            
+            class Punkt{
+                 constructor(x,y,r){
+                     this.x=x;
+                     this.y=y;
+                     this.r=r;
+                     this.visible=false;
+                 }
+                show(x,y){
+                    var dx = x - this.x, dy = y - this.y;
+			         var distsq = dx * dx + dy * dy;
+			         var rsq = this.r * this.r;
+			         return distsq < rsq;
+                   
+                }
+            
+            }
+            
+function load(){
+    
+    img_Ok.src ="img2.png";
+    img_Dif.src ="img.png"; 
+    img_Dif.onload=init;
+}
+function reset()
+{
+    punkty = [];
+    score = 0;
+    win=false;
+    
+    scale = img_Ok.width/img_Ok.height;
+    dodajpunkty();
+                
+}
+            
+function dodajpunkty()
+{
+     punkty.push(new Punkt(152,141,15));
+     punkty.push(new Punkt(213,264,15));
+     punkty.push(new Punkt(88,314,15));
+     punkty.push(new Punkt(325,290,15));
+     punkty.push(new Punkt(156,394,15));
+     punkty.push(new Punkt(92,454,15));
+     punkty.push(new Punkt(206,473,15));
+     punkty.push(new Punkt(326,426,15));
+     punkty.push(new Punkt(203,599,15));
+     punkty.push(new Punkt(241,659,15));
+     
+    
+    
+}
+            
+function init(){
+            reset();
+            
+			my_canvas = document.createElement('canvas');
+            my_canvas.width=2*W+X;
+            H=Math.floor(W/scale);
+            my_canvas.height=H+Y+40;
+          
+			
+			
+           
+			
+            
+			if(!Modernizr.touch){
+				my_canvas.addEventListener('click', onClick, false);
+			
+			}else{
+			
+				window.addEventListener('touchend', onClick, false);
+		
+			}
+	
+            
+			document.body.appendChild(my_canvas);
+			ctx = my_canvas.getContext('2d');
+			
+          	ctx.imageSmoothingEnabled = false;
+            ctx.mozImageSmoothingEnabled = false;
+            ctx.oImageSmoothingEnabled = false;
+            ctx.webkitImageSmoothingEnabled = false;
+
+		
+           animationLoop(); 
+            
+          
+			
+}
+            
+            function animationLoop(time){
+				requestAnimationFrame( animationLoop );
+                console.log(img_Ok.src);
+                	
+				if(time-lastTime>=1000/fps){
+					lastTime = time;
+                   
+                    ctx.strokeStyle = 'black';
+                    ctx.lineWidth = 3;
+                    ctx.lineJoin = 'round'
+                    
+					ctx.clearRect(0,0,my_canvas.width, my_canvas.height);
+                    ctx.drawImage(img_Ok,X,Y,W,H);
+                    ctx.strokeRect(X,Y,W,H);
+                    ctx.drawImage(img_Dif,X+W,Y,W,H);
+                    ctx.strokeRect(X+W,Y,W,H);
+                    ctx.strokeRect(X,Y+H,W*2,40);
+                    
+                    ctx.font = "30px Arial";
+                    if(punkty.length-score>0)
+                    {
+                        ctx.strokeText(`Znajdź ${punkty.length-score} różnic`, X+W/2, Y+H+30);
+                    }
+                    else
+                    {
+                      ctx.strokeText(`Brawo Wygrałeś!!! Zagraj jeszcze raz`, X+W/2, Y+H+30);
+                       
+                    }
+                    ctx.strokeStyle = 'red';
+                    ctx.lineWidth = 4
+
+                    
+                    punkty.forEach((p)=>
+                         {
+                            if(p.visible)
+                                {
+                                    ctx.beginPath();
+                                    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+                                    ctx.stroke();
+                                    ctx.beginPath();
+                                    ctx.arc(p.x+W, p.y, p.r, 0, 2 * Math.PI);
+                                    ctx.stroke();
+                                }
+                    });   
+                }
+			}
+	
+            function onClick(event){
+                let x,y;
+                
+				if(event.type=='click'){
+					x = event.x;
+					y = event.y;
+				}else{ // W innym przypadku musiało to być zdarzenie dotykowe.
+					touches = event.touches;
+                    x=touches[0].pageX;
+                    y=touches[0].pageY;
+					event.preventDefault()
+				}
+                if(x>W){
+                    x=x-W;
+                }
+                if(win) reset();
+                if(punkty.length-score<=0) win=true;
+                
+                console.log(x,y);
+                 punkty.forEach((p,i)=>
+                         {
+                    
+                            if(!p.visible&&p.show(x,y))
+                                {
+                                  p.visible=true;
+                                  score++;
+                                }
+                    });
+				
+			} 
+load();
+			
+		</script>
+	</body>
+</html>

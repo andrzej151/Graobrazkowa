@@ -1,0 +1,130 @@
+h3 {background-color: aqua;
+    font-family: cursive;
+    text-align: center
+}
+h4 {font-family: cursive;
+    text-align: center
+}
+
+main{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{
+      /* Background pattern from Subtle Patterns */
+    background-image: url("../img/pool_table.png");
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0 !important
+}
+
+nav
+{ 
+	width: 100%;
+	padding: 10px 0;
+	background-color: #0c6d0c;
+	text-align: center;
+	border-top: 1px solid #334a33;
+	border-bottom: 1px solid #334a33;
+}
+       
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+}
+
+ol a
+{
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+
+ol > li
+{
+	float: left;
+	width: 150px;
+	height: 40px;
+	border-right: 1px dashed #334a33;
+}
+
+ol > li:first-child
+{
+	border-left: 1px dashed #334a33;
+}
+
+ol > li:hover
+{
+	background-color: #1e9f1e;
+}
+
+ol > li:hover > a
+{
+	color: #451717;
+}
+
+ol > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+}
+
+ol > li:hover > ul
+{
+	display: block;
+}
+
+ol > li > ul > li
+{
+	background-color:#1e9f1e;
+	position: relative;
+	z-index: 100;
+	border-top: 1px dashed #334a33;
+}
+
+ol > li > ul > li:hover
+{
+	background-color: #0c6d0c;
+}
+
+ol > li > ul > li:hover > a
+{
+	color: #451717;
+}
+
+ol > li > ul > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+}
+
+ol > li:hover > ul > li:hover > ul
+{
+	display: inline-block;
+}
+
+ol > li:hover > ul > li:hover > ul > li
+{
+	background-color: #0c6d0c;
+	z-index: 100;
+	border-top: 1px dashed #334a33;
+}
+ol > li:hover > ul > li:hover > ul > li:hover
+{
+	background-color:#1e9f1e;
+	z-index: 100;
+	border-top: 1px dashed #334a33;
+}

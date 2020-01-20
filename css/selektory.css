@@ -1,0 +1,52 @@
+/* selektor uniwersalny */
+* {
+    color: brown;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/* selektor elementu danego typu */
+h3 {text-decoration: underline;
+    text-align: center;
+}
+
+/* selektor klasy */
+.redRightAlignedText{
+    color: red;
+    text-align: right;
+}
+
+/* selektor elementu z danym id */
+#daneID {
+    font-family: cursive;
+    text-align: left;
+}
+
+
+/*ZAGNIEŻDŻENIE
+ selektor potomka */
+ul li {
+    color: black;
+    text-decoration: underline;
+}
+
+/* selektor dziecka */
+ul > li {
+    color: red;
+    text-decoration: none;
+}
+
+/*ELEMENTY NASTĘPUJĄCE PO SOBIE
+    selektor następnego elementu */
+ol ~ p {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* selektor bezpośredniego następnego elementu */
+ol + p {
+    color: darkgreen;
+    text-decoration: underline;
+}
+
+
